@@ -58,6 +58,5 @@ def writeValues(rowID, content):
 def clearValues(range):
     service.spreadsheets().values().clear(spreadsheetId=SPREADSHEET_ID, range=f'Feuille 1!{range}').execute()
 
-
 if __name__ == '__main__':
     getValues()
