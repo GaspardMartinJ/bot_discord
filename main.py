@@ -21,23 +21,22 @@ bot = commands.Bot(command_prefix="!", intents=default_intents)
 async def on_ready():
     print("Le bot est prêt !")
 
-@bot.event
-async def on_message(message):
+@bot.command(name="ping")
+async def ping(ctx):
     global messageID
     global sentTime
     global userList
-    if message.content == "ping":
-        pingString = ''
-        userList = []
-        for name, id in pingList:
-            user = discord.utils.get(message.guild.members, name = name, discriminator=id)
-            userList.append(user)
-            pingString += user.mention + ' '
-        pingString += ': réagissez avec :thumbsup: pour montrer que vous avez vu le message'
-        pingMessage = await message.channel.send(pingString)
-        sentTime = datetime.now(timezone.utc)
-        messageID = pingMessage.id
-        await pingMessage.add_reaction('👍')
+    pingString = ''
+    userList = []
+    for name, id in pingList:
+        user = discord.utils.get(ctx.guild.members, name = name, discriminator=id)
+        userList.append(user)
+        pingString += user.mention + ' '
+    pingString += ': réagissez avec :thumbsup: pour montrer que vous avez vu le message'
+    pingMessage = await ctx.channel.send(pingString)
+    sentTime = datetime.now(timezone.utc)
+    messageID = pingMessage.id
+    await pingMessage.add_reaction('👍')
         
     
 @bot.event
