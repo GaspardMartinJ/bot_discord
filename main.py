@@ -37,6 +37,7 @@ async def ping(ctx):
     sentTime = datetime.now(timezone.utc)
     messageID = pingMessage.id
     await pingMessage.add_reaction('👍')
+    sheetsAPI.clearValues("C2:C4")
         
     
 @bot.event
