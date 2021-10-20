@@ -22,14 +22,10 @@ async def on_ready():
     print("Le bot est prêt !")
 
 @bot.event
-async def on_member_join(member):
-    general_channel = bot.get_channel(890953179150311517)
-    general_channel.send(f"Bienvenue sur le serveur {member.display_name} !")
-
-@bot.event
 async def on_message(message):
     global messageID
     global sentTime
+    global userList
     if message.content == "ping":
         pingString = ''
         userList = []
@@ -46,7 +42,7 @@ async def on_message(message):
     
 @bot.event
 async def on_reaction_add(reaction, user):
-    if reaction.message.id == messageID and str(reaction.emoji) == '👍' and user.bot == False:
+    if reaction.message.id == messageID and str(reaction.emoji) == '👍' and user.bot == False and user in userList:
         reactTime = datetime.now(timezone.utc)
         timeDiff = reactTime - sentTime
         message = str(divmod(timeDiff.total_seconds(), 60)[0]) + ' minutes'
