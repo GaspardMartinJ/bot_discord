@@ -5,7 +5,7 @@ import sheetsAPI
 import json
 
 values = sheetsAPI.getValues()
-nameDict = {'test1': ['gaspard', '1291'], 'test2': ['tp_bot_discord', '8512']}
+nameDict = {'test1': ['gaspard', '1291'], 'test2': ['tp_bot_discord', '8512'], 'test3': ['CheeseNan', '0193']}
 pingList = []
 messageID = 0
 for person in values:
@@ -44,7 +44,7 @@ async def on_reaction_add(reaction, user):
     if reaction.message.id == messageID and str(reaction.emoji) == '👍' and user.bot == False and user in userList:
         reactTime = datetime.now(timezone.utc)
         timeDiff = reactTime - sentTime
-        message = str(divmod(timeDiff.total_seconds(), 60)[0]) + ' minutes'
+        message = str(round(divmod(timeDiff.total_seconds(), 60)[0])) + ' minutes'
         content = list(nameDict.values())
         rowID = content.index([user.name, user.discriminator])+2
         values = [[message]]
