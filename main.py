@@ -3,6 +3,8 @@ import discord
 from discord.ext import commands
 import sheetsAPI
 import json
+import os
+
 
 default_intents = discord.Intents.default()
 default_intents.members = True
@@ -63,4 +65,5 @@ async def on_reaction_add(reaction, user):
         values = [[message]]
         sheetsAPI.writeValues(rowID, values)
 
-bot.run(json.load(open('botToken.json'))['TOKEN'])
+token = os.environ.get('bot_token')
+bot.run(token)
