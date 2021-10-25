@@ -1,7 +1,6 @@
 from __future__ import print_function
 from os import system
 import os.path
-import os
 from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
@@ -12,7 +11,7 @@ import json
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
 
 # The ID and range of a sample spreadsheet.
-SPREADSHEET_ID = os.environ.get('sheets_id')
+SPREADSHEET_ID = json.load(open('sheetID.json'))['ID']
 RANGE_NAME = 'Feuille 1!A2:B10'
 
 def getValues():
