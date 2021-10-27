@@ -11,6 +11,8 @@ pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-
 Vous pouvez utiliser le tableau fourni (en remplaçant les noms par les membres de votre serveur) ou en créer un autre et mettre son ID dans un fichier sheetID.json
 Pour utiliser l'API google sheets il faut normalement se créer un fichier credentials.json qui va demander confirmation à un compte google qui à accès au projet google cloud mais je vous ai envoyé un fichier token.json qui permet de ne pas avoir à s'identifier pendant un certain temps.
 
+Pour mettre en ligne le bot: python main.py
+
 ## Fonction
 
 Le bot a une seule commande qui éxecute une action: !ping
